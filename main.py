@@ -11,3 +11,5 @@ print(head.to_string())
 info = df.info()
 
 describe = df.describe()
+
+print(describe.to_string())
