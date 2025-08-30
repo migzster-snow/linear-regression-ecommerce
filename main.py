@@ -54,12 +54,43 @@ max              36.139662    15.126994        40.005182              6.922689  
 # Exploratory Data Analysis (EDA)
 
 # Jointplots
-sns.jointplot(x="Time on Website", y="Yearly Amount Spent", data=df, alpha=0.5)
-sns.jointplot(x="Time on App", y="Yearly Amount Spent", data=df, alpha=0.5)
-sns.jointplot(x="Avg. Session Length", y="Yearly Amount Spent", data=df, alpha=0.5)
-sns.jointplot(x="Length of Membership", y="Yearly Amount Spent", data=df, alpha=0.5)
+# sns.jointplot(x="Time on Website", y="Yearly Amount Spent", data=df, alpha=0.5)
+# sns.jointplot(x="Time on App", y="Yearly Amount Spent", data=df, alpha=0.5)
+# sns.jointplot(x="Avg. Session Length", y="Yearly Amount Spent", data=df, alpha=0.5)
+# sns.jointplot(x="Length of Membership", y="Yearly Amount Spent", data=df, alpha=0.5)
 
 # Pairplot
-sns.pairplot(df, kind="scatter", plot_kws={'alpha':0.5})
+# sns.pairplot(df, kind="scatter", plot_kws={'alpha':0.5})
+
+# Linear Model Plots (lmplots)
+# sns.lmplot(
+#     x="Length of Membership", 
+#     y="Yearly Amount Spent", 
+#     data=df,
+#     scatter_kws={'alpha':0.5}
+# )
+
+# sns.lmplot(
+#     x="Avg. Session Length",
+#     y="Yearly Amount Spent",
+#     data=df,
+#     scatter_kws={'alpha':0.5}
+# )
+
+# sns.lmplot(
+#     x="Time on App",
+#     y="Yearly Amount Spent",
+#     data=df,
+#     scatter_kws={'alpha':0.5}
+# )
+
+# sns.lmplot(
+#     x="Time on Website",
+#     y="Yearly Amount Spent",
+#     data=df,
+#     scatter_kws={'alpha':0.5}
+# )
+
+from sklearn.model_selection import train_test_split
 
 plt.show()
