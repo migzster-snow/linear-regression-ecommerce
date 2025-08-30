@@ -59,4 +59,7 @@ sns.jointplot(x="Time on App", y="Yearly Amount Spent", data=df, alpha=0.5)
 sns.jointplot(x="Avg. Session Length", y="Yearly Amount Spent", data=df, alpha=0.5)
 sns.jointplot(x="Length of Membership", y="Yearly Amount Spent", data=df, alpha=0.5)
 
+# Pairplot
+sns.pairplot(df, kind="scatter", plot_kws={'alpha':0.5})
+
 plt.show()
