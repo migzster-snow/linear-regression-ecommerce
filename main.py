@@ -55,12 +55,20 @@ max              36.139662    15.126994        40.005182              6.922689  
 
 # Jointplots
 # sns.jointplot(x="Time on Website", y="Yearly Amount Spent", data=df, alpha=0.5)
+# plt.show()
+
 # sns.jointplot(x="Time on App", y="Yearly Amount Spent", data=df, alpha=0.5)
+# plt.show()
+
 # sns.jointplot(x="Avg. Session Length", y="Yearly Amount Spent", data=df, alpha=0.5)
+# plt.show()
+
 # sns.jointplot(x="Length of Membership", y="Yearly Amount Spent", data=df, alpha=0.5)
+# plt.show()
 
 # Pairplot
 # sns.pairplot(df, kind="scatter", plot_kws={'alpha':0.5})
+# plt.show()
 
 # Linear Model Plots (lmplots)
 # sns.lmplot(
@@ -69,6 +77,7 @@ max              36.139662    15.126994        40.005182              6.922689  
 #     data=df,
 #     scatter_kws={'alpha':0.5}
 # )
+# plt.show()
 
 # sns.lmplot(
 #     x="Avg. Session Length",
@@ -76,6 +85,7 @@ max              36.139662    15.126994        40.005182              6.922689  
 #     data=df,
 #     scatter_kws={'alpha':0.5}
 # )
+# plt.show()
 
 # sns.lmplot(
 #     x="Time on App",
@@ -83,6 +93,7 @@ max              36.139662    15.126994        40.005182              6.922689  
 #     data=df,
 #     scatter_kws={'alpha':0.5}
 # )
+# plt.show()
 
 # sns.lmplot(
 #     x="Time on Website",
@@ -90,7 +101,49 @@ max              36.139662    15.126994        40.005182              6.922689  
 #     data=df,
 #     scatter_kws={'alpha':0.5}
 # )
+# plt.show()
 
+# Train-Test Split
 from sklearn.model_selection import train_test_split
 
+X = df[["Avg. Session Length", "Time on App", "Time on Website", "Length of Membership"]]
+y = df["Yearly Amount Spent"]
+
+# print(X.to_string())
+# print(y.to_string())
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# print(X_train.to_string())
+# print(X_test.to_string())
+# print(y_train.to_string())
+# print(y_test.to_string())
+
+# X is uppercase because it is a matrix
+# y is lowercase because it is a vector
+
+# Create and fit the model
+from sklearn.linear_model import LinearRegression
+lm = LinearRegression()
+lm.fit(X_train, y_train)
+
+lm.coef_
+# print(lm.coef_)
+
+cdf = pd.DataFrame(lm.coef_, X.columns, columns=['Coefficient'])
+# print(cdf.to_string())
+"""
+                      Coefficient
+Avg. Session Length     25.724256
+Time on App             38.597135
+Time on Website          0.459148
+Length of Membership    61.674732
+"""
+
+# Predictions
+predictions = lm.predict(X_test)
+
+sns.scatterplot(x=predictions, y=y_test)
+plt.xlabel("Predictions")
+plt.title("Evaluation of Model")
 plt.show()
