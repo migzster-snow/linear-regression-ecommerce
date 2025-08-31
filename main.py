@@ -143,7 +143,32 @@ Length of Membership    61.674732
 # Predictions
 predictions = lm.predict(X_test)
 
-sns.scatterplot(x=predictions, y=y_test)
-plt.xlabel("Predictions")
-plt.title("Evaluation of Model")
+# sns.scatterplot(x=predictions, y=y_test)
+# plt.xlabel("Predictions")
+# plt.title("Evaluation of Model")
+# plt.show()
+
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+import math
+
+# print('Mean Absolute Error: ', mean_absolute_error(y_test, predictions))
+# print('Mean Squared Error: ', mean_squared_error(y_test, predictions))
+# print('Root Mean Squared Error: ', math.sqrt(mean_squared_error(y_test, predictions)))
+"""
+Mean Absolute Error:  8.426091641432116
+Mean Squared Error:  103.91554136503333
+Root Mean Squared Error:  10.193897260863155
+"""
+
+# Histogram of Residuals
+residuals = y_test - predictions
+sns.displot(residuals, bins=30, kde=True)
+plt.title("Residuals")
 plt.show()
+
+import pylab
+import scipy.stats as stats
+
+# Probability Plot
+stats.probplot(residuals, dist="norm", plot=pylab)
+pylab.show()
